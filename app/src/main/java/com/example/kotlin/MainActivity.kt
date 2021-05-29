@@ -1,5 +1,6 @@
 package com.example.kotlin
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -10,6 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View.inflate
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        //Working with Buttons
+        //----------------------------------------------------Working with Buttons-----------------------------------------------
         /*
         var submit = findViewById<Button>(R.id.btn_submit)
          submit.setOnClickListener{
@@ -31,7 +33,8 @@ class MainActivity : AppCompatActivity() {
              Log.d("MainActivity", "$name $username $address $gender")
          } */
 
-        //Working with TextViews
+
+        //-----------------------------------------------------Working with TextViews---------------------------------------------
         /*var value = 0
         var increase = findViewById<Button>(R.id.btn_increase);
         var count = findViewById<TextView>(R.id.tv_count);
@@ -41,7 +44,8 @@ class MainActivity : AppCompatActivity() {
             count.text = "Let's count together $value"
         }*/
 
-        //Image View
+
+        //--------------------------------------------------------Image View----------------------------------------------------------
         /*val btnShow = findViewById<Button>(R.id.btn_show);
         var imageView = findViewById<ImageView>(R.id.imageView);
 
@@ -49,7 +53,8 @@ class MainActivity : AppCompatActivity() {
             imageView.setImageResource(R.drawable.ic_launcher_background);
         }*/
 
-        //RadioButtons and Checkbox
+
+        //-------------------------------------------------------RadioButtons and Checkbox------------------------------------------------
         /*findViewById<Button>(R.id.btn_order).setOnClickListener {
             val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
             val checkedRadioButtonId = radioGroup.checkedRadioButtonId
@@ -68,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                     (if (three) "\n three" else "")
                     }*/
 
-        //Toasts and Context
+        //-----------------------------------------------------------------Toasts and Context---------------------------------------------------
         /* findViewById<Button>(R.id.showToast).setOnClickListener {
 
              Toast(this).apply {
@@ -82,7 +87,7 @@ class MainActivity : AppCompatActivity() {
          }*/
 
 
-        //Intents and share data between activities
+        //----------------------------------------------------------Intents and share data between activities--------------------------------------
         /*findViewById<Button>(R.id.openActivity2).setOnClickListener {
 
             val person = Person("Hi I am from First Activity")
@@ -92,9 +97,42 @@ class MainActivity : AppCompatActivity() {
             }
         }*/
 
+
+        //-------------------------------------------------------------------Alert Dialogs------------------------------------------------------------
+        /*findViewById<Button>(R.id.one).setOnClickListener {
+            val dialogOne =
+                AlertDialog.Builder(this).setTitle("ALert Dialog").setMessage("This is dialog one")
+                    .setIcon(R.drawable.ic_launcher_background).setPositiveButton("Yes") { _, _ ->
+                        Toast.makeText(this, "You Pressed Yes", Toast.LENGTH_LONG).show()
+                    }
+                    .setNegativeButton("No") { _, _ ->
+                        Toast.makeText(this, "You Pressed No", Toast.LENGTH_LONG).show()
+                    }.create().show()
+        }
+
+
+        findViewById<Button>(R.id.two).setOnClickListener {
+            val options = arrayOf("Item 1", "Item 2", "Item3")
+            val choiceDialog = AlertDialog.Builder(this).setTitle("Choose One Option")
+                .setSingleChoiceItems(options, 0) { _, which ->
+                    Toast.makeText(this, "You Pressed ${options[which]}", Toast.LENGTH_LONG).show()
+                }.setPositiveButton("Accept") { _, _ ->
+                    Toast.makeText(this, "You Accepted ", Toast.LENGTH_LONG).show()
+                }
+                .setNegativeButton("Decline") { _, _ ->
+                    Toast.makeText(this, "You Declined", Toast.LENGTH_LONG).show()
+                }.create().show()
+        }*/
+
+
+        //---------------------------------------------------Spinner---------------------------------------------------------------------------------
+
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+    //---------------------------------------------------Toolbar Menu Items---------------------------------------------------------------------------
+
+    /* override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_items, menu)
         return true
     }
@@ -107,5 +145,5 @@ class MainActivity : AppCompatActivity() {
         }
 
         return true
-    }
+    }*/
 }
