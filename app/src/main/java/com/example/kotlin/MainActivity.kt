@@ -14,6 +14,8 @@ import android.view.View.inflate
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.get
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
 
@@ -159,7 +161,22 @@ class MainActivity : AppCompatActivity() {
             }*/
 
 
-        
+        //--------------------------------------------Recycler View-----------------------------------------------------------------------------------
+        /* val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+         val list = mutableListOf(
+             Todos("Title 1", false),
+             Todos("Title 2", true),
+             Todos("Title 3", false),
+             Todos("Title 4", true),
+             Todos("Title 5", false),
+             Todos("Title 6", true)
+         )
+
+         val adapter: RecyclerAdapter = RecyclerAdapter(list)
+         recyclerView.adapter = adapter
+         recyclerView.layoutManager = LinearLayoutManager(this) */
+
+
     }
 
 
