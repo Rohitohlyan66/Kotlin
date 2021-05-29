@@ -9,9 +9,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.View.inflate
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.get
 
 class MainActivity : AppCompatActivity() {
 
@@ -126,7 +128,38 @@ class MainActivity : AppCompatActivity() {
 
 
         //---------------------------------------------------Spinner---------------------------------------------------------------------------------
+        /*findViewById<Spinner>(R.id.spinner).onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener,
+                AdapterView.OnItemClickListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
 
+                }
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    Toast.makeText(
+                        this@MainActivity,
+                        parent?.getItemAtPosition(position).toString(), Toast.LENGTH_LONG
+                    )
+                        .show()
+                }
+
+                override fun onItemClick(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+
+                }
+            }*/
+
+
+        
     }
 
 
