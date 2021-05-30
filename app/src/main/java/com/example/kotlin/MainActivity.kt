@@ -1,11 +1,24 @@
 package com.example.kotlin
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.app.TaskStackBuilder
+import android.content.Context
+import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.system.Os.close
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
@@ -22,6 +35,9 @@ import com.google.android.material.tabs.TabLayoutMediator
 class MainActivity : AppCompatActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
+    val CHANNEL_ID = "channelID"
+    val CHANNEL_NAME = "channelName"
+    val NOTIFICATION_ID = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -276,6 +292,64 @@ class MainActivity : AppCompatActivity() {
         }*/
 
 
+        //----------------------------------------------------------SharedPreferences------------------------------------------------------------------
+        /* val name = findViewById<EditText>(R.id.name)
+         val age = findViewById<EditText>(R.id.age)
+         val save = findViewById<Button>(R.id.save)
+         val load = findViewById<Button>(R.id.load)
+         val adult = findViewById<CheckBox>(R.id.adult)
+
+         val sharePref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+         val editor = sharePref.edit()
+
+         save.setOnClickListener {
+             editor.apply {
+                 putString("name", name.text.toString())
+                 putInt("age", age.text.toString().toInt())
+                 putBoolean("isAdult", adult.isChecked)
+                 apply()
+             }
+         }
+
+         load.setOnClickListener {
+             val names = sharePref.getString("name", null)
+             val ages = sharePref.getInt("age", 0)
+             val isAdult = sharePref.getBoolean("isAdult", false)
+
+             name.setText(names)
+             age.setText(ages.toString())
+             adult.isChecked = isAdult
+         } */
+
+        //--------------------------------------------Notifications--------------------------------------------------------------------------------
+        /*val notifyButton = findViewById<Button>(R.id.notify)
+        createNotificationChannel()
+
+        val intent = Intent(this, MainActivity::class.java)
+        val pendingIntent = TaskStackBuilder.create(this).run {
+            addNextIntentWithParentStack(intent)
+            getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
+
+        }
+
+        val notification = NotificationCompat.Builder(this, CHANNEL_ID)
+            .apply {
+                setContentTitle("Awesome Notification")
+                setContentText("My First Notification")
+                setSmallIcon(R.drawable.ic_launcher_foreground)
+                priority = NotificationCompat.PRIORITY_HIGH
+                setContentIntent(pendingIntent)
+            }
+            .build()
+
+
+        val notificationManager = NotificationManagerCompat.from(this)
+
+        notifyButton.setOnClickListener {
+            notificationManager.notify(NOTIFICATION_ID, notification)
+        } */
+
+
     }
 
 
@@ -301,11 +375,27 @@ class MainActivity : AppCompatActivity() {
         return true
     }*/
 
+    /*
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
             return true
         }
 
         return super.onOptionsItemSelected(item)
-    }
+    }*/
+
+    /*private fun createNotificationChannel() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                CHANNEL_ID, CHANNEL_NAME,
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
+                lightColor = Color.GREEN
+                enableLights(true)
+            }
+            val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            manager.createNotificationChannel(channel)
+        }
+    }*/
 }
