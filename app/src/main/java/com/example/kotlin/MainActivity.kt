@@ -1,24 +1,27 @@
 package com.example.kotlin
 
-import android.content.DialogInterface
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
+import android.system.Os.close
 import android.view.MenuItem
-import android.view.View
-import android.view.View.inflate
-import android.widget.*
-import androidx.appcompat.app.AlertDialog
-import androidx.core.view.get
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
+import com.example.kotlin.fragments.FirstFragment
+import com.example.kotlin.fragments.FragmentOne
+import com.example.kotlin.fragments.FragmentSecond
+import com.example.kotlin.fragments.FragmentThree
+import com.google.android.material.bottomnavigation.BottomNavigationMenu
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -177,8 +180,109 @@ class MainActivity : AppCompatActivity() {
          recyclerView.layoutManager = LinearLayoutManager(this) */
 
 
+        //------------------------------------------------Fragments---------------------------------------------------------------------------------------
+        /*val firstFragment = FirstFragment()
+        val secondFragment = SecondFragment()
+
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragmentContainer, firstFragment)
+            commit()
+        }
+
+        findViewById<Button>(R.id.buttonOne).setOnClickListener {
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentContainer, firstFragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+        findViewById<Button>(R.id.buttonTwo).setOnClickListener {
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentContainer, secondFragment)
+                addToBackStack(null)
+                commit()
+            }
+        }*/
+
+        //----------------------------------------------Bottom Navigation with fragments-------------------------------------------------------------
+        /*val first = FragmentOne()
+        val second = FragmentSecond()
+        val third = FragmentThree()
+
+        setFragment(first)
+
+        findViewById<BottomNavigationView>(R.id.nav_bar).setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.one -> setFragment(first)
+                R.id.two -> setFragment(second)
+                R.id.three -> setFragment(third)
+            }
+            true
+        }*/
+
+
+        //--------------------------------------------------Swipable Views and Tab Layout------------------------------------------------------------------------------
+        /*  val images = listOf(
+              R.drawable.ic_launcher_background,
+              R.drawable.ic_launcher_foreground,
+              R.drawable.ic_launcher_background,
+              R.drawable.ic_launcher_foreground,
+              R.drawable.ic_launcher_background,
+              R.drawable.ic_launcher_foreground,
+          )
+
+
+          val adapter = ViewPagerAdapter(images)
+          val tabs = findViewById<TabLayout>(R.id.tabs)
+          val pager2 = findViewById<ViewPager2>(R.id.view_pager2)
+          pager2.adapter = adapter
+          pager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+
+          TabLayoutMediator(tabs, pager2) { tab, position ->
+              tab.text = "Tab ${position + 1}"
+          }.attach()
+
+          tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+              override fun onTabReselected(tab: TabLayout.Tab?) {
+                  Toast.makeText(this@MainActivity, "Tab Reselected ${tab?.text}", Toast.LENGTH_LONG)
+                      .show()
+              }
+
+              override fun onTabUnselected(tab: TabLayout.Tab?) {
+                  Toast.makeText(this@MainActivity, "Tab Unselected ${tab?.text}", Toast.LENGTH_LONG)
+                      .show()
+              }
+
+              override fun onTabSelected(tab: TabLayout.Tab?) {
+                  Toast.makeText(this@MainActivity, "Tab Selected ${tab?.text}", Toast.LENGTH_LONG)
+                      .show()
+
+              }
+          })*/
+
+
+        //------------------------------------------------------Navigation Drawer-------------------------------------------------------------------
+        /*var drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        findViewById<NavigationView>(R.id.nav_bar).setNavigationItemSelectedListener {
+            Toast.makeText(this, it.title.toString(), Toast.LENGTH_LONG).show()
+            true
+        }*/
+
+
     }
 
+
+    /*private fun setFragment(fragment: Fragment) = supportFragmentManager.beginTransaction().apply {
+        replace(R.id.fragment_container, fragment)
+        commit()
+    } */
 
     //---------------------------------------------------Toolbar Menu Items---------------------------------------------------------------------------
 
@@ -196,4 +300,12 @@ class MainActivity : AppCompatActivity() {
 
         return true
     }*/
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
 }
